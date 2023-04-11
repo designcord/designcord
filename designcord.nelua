@@ -1,0 +1,27 @@
+require 'deps.gl'
+require 'deps.lua'
+require 'deps.json'
+require 'deps.glfw'
+require 'deps.archive'
+require 'deps.datetime'
+
+glfwInit()
+local window = glfwCreateWindow(1080, 720, "Designcord", nilptr, nilptr)
+if not window then
+    error "Could not create window"
+end
+glfwMakeContextCurrent(window)
+if gladLoadGL(glfwGetProcAddress) == 0 then
+    error 'Could not initialize GLAD'
+end
+print('OpenGL loaded:', (@cstring)(glGetString(GL_VERSION)))
+
+while glfwWindowShouldClose(window) == 0 do
+
+
+
+    glfwSwapBuffers(window)
+    glfwPollEvents()
+end
+
+glfwTerminate()
